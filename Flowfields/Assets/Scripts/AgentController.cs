@@ -39,7 +39,7 @@ public class AgentController : MonoBehaviour
         {
             return;
         }
-
+        //update the movement for each agent, based on the best direction vector
         foreach(GameObject agent in agentsInGame)
         {
             Cell cellBelow = gridModifier.flowfield.GetCellFromWorldPos(agent.transform.position);
@@ -55,16 +55,18 @@ public class AgentController : MonoBehaviour
     {
         Vector2Int gridSize = gridModifier.gridSize;
         float nodeRadius = gridModifier.cellRadius;
+        //clamp the agent spawn to the grid
         Vector2 maxSpawnPosition = new Vector2(gridSize.x * nodeRadius * 2 , gridSize.y * nodeRadius * 2 );
 
-        int collisionMask = LayerMask.GetMask("Wall, Agent"); // put layer to agents
+        int collisionMask = LayerMask.GetMask("Wall", "Agent"); 
         Vector3 newPosition;
 
         float size = transform.localScale.x;
        
-
-        for(int i = 0; i < agentsPerSpawn; i++)
+        
+        for(int i = 0; i < agentsPerSpawn; i++) 
         {
+            //spawn a new agent
             GameObject newAgent = Instantiate(agentPrefab);
             newAgent.transform.parent = transform;
             agentsInGame.Add(newAgent);
@@ -73,7 +75,7 @@ public class AgentController : MonoBehaviour
             {
                 newPosition = new Vector3(Random.Range(0, maxSpawnPosition.x), 0, Random.Range(0, maxSpawnPosition.y));
                 newAgent.transform.position = newPosition;
-            } while (Physics.OverlapSphere(newPosition, size, collisionMask).Length > 0);
+            } while (Physics.OverlapSphere(newPosition, size, collisionMask).Length > 0); //make sure they dont spawn inside walls or on agents
 
 
         }

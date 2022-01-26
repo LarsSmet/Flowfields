@@ -57,6 +57,7 @@ public class GridDirection
         northWest
     };
 
+    //used for the vectors
     public static readonly List<GridDirection> AllDirections = new List<GridDirection>
     {
         none,

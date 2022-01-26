@@ -71,7 +71,7 @@ public class FlowField
                 else if(hasIncreasedCost == false && col.gameObject.layer == LayerMask.NameToLayer("Mud"))
                 {
                     currentCell.IncreaseCost(4);
-                    //prevent increasing the same cell that have multiple muds // can change to mudincreased cost if want to add more values
+                    //prevent increasing the same cell that have multiple muds 
                     hasIncreasedCost = true;
                 }
             }
@@ -83,7 +83,7 @@ public class FlowField
 
     public void CreateIntegrationField(Cell _destinationCell)
     {
-
+        //set the costs
         destionationCell = _destinationCell;
 
         _destinationCell.cost = 0;
@@ -94,19 +94,19 @@ public class FlowField
 
         //put destinationCell on the queue
         cellsToCheck.Enqueue(destionationCell);
-
+        
         while(cellsToCheck.Count > 0)
         {
             Cell currentCell = cellsToCheck.Dequeue();
             List<Cell> currentNeighbors = GetNeigbors(currentCell.gridIndex, GridDirection.CardinalDirections);
-
+            //loop over the neighbors
             foreach (Cell currentNeighbor in currentNeighbors)
             {
                 if(currentNeighbor.cost == currentNeighbor.maxCostIncrease )
                 {
                     continue;
                 }
-                //set the bestcost of the neighbor to current cell + neighbor cost -> makes us find the shortest path
+                //set the bestcost of the neighbor to current cell its best cost + neighbor cost
                 if(currentNeighbor.cost + currentCell.bestCost < currentNeighbor.bestCost)
                 {
                     currentNeighbor.bestCost = currentNeighbor.cost + currentCell.bestCost;

@@ -15,7 +15,7 @@ public class GridModifier : MonoBehaviour
         flowfield = new FlowField(cellRadius, gridSize);
         flowfield.CreateGrid();
         gridDebug.SetFlowField(flowfield);
-        //gridDebug.DrawFlowField();
+  
   
     }
 
@@ -30,7 +30,7 @@ public class GridModifier : MonoBehaviour
             flowfield.CreateCostField();
 
            
-
+            //change the destination cell
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraDistance);
             Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
             Cell destinationCell = flowfield.GetCellFromWorldPos(worldMousePos);

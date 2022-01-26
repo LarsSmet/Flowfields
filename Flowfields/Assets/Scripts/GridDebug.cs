@@ -19,11 +19,11 @@ public class GridDebug : MonoBehaviour
     private float cellRadius;
     private FlowField flowField;
 
-    private Sprite[] ffIcons;
+    private Sprite[] sprite;
 
     private void Start()
     {
-        ffIcons = Resources.LoadAll<Sprite>("Sprites/FFicons");
+        sprite = Resources.LoadAll<Sprite>("Sprites/FFicons");
 
     }
 
@@ -79,80 +79,80 @@ public class GridDebug : MonoBehaviour
 
     private void DisplayCell(Cell cell)
     {
-        
-        GameObject iconGO = new GameObject();
+        //arrow textures
+        GameObject textureObject = new GameObject();
 
-        SpriteRenderer iconSR = iconGO.AddComponent<SpriteRenderer>();
-        iconGO.transform.parent = transform;
+        SpriteRenderer render = textureObject.AddComponent<SpriteRenderer>();
+        textureObject.transform.parent = transform;
         Vector3 scale = new Vector3(3, 3, 3.0f);
-        iconGO.transform.localScale = scale;
-        iconGO.transform.position = cell.worldPosition;
+        textureObject.transform.localScale = scale;
+        textureObject.transform.position = cell.worldPosition;
   
         if (cell.cost == 0)
         {
-            iconSR.sprite = ffIcons[3];
+            render.sprite = sprite[3];
             Quaternion newRot = Quaternion.Euler(90, 0, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
        
         }
         else if (cell.cost == cell.maxCostIncrease)
         {
-            iconSR.sprite = ffIcons[2];
+            render.sprite = sprite[2];
             Quaternion newRot = Quaternion.Euler(90, 0, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
            
         }
         else if (cell.bestDirection == GridDirection.north)
         {
-            iconSR.sprite = ffIcons[0];
+            render.sprite = sprite[0];
             Quaternion newRot = Quaternion.Euler(90, 0, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
         }
         else if (cell.bestDirection == GridDirection.south)
         {
-            iconSR.sprite = ffIcons[0];
+            render.sprite = sprite[0];
             Quaternion newRot = Quaternion.Euler(90, 180, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
         }
         else if (cell.bestDirection == GridDirection.east)
         {
-            iconSR.sprite = ffIcons[0];
+            render.sprite = sprite[0];
             Quaternion newRot = Quaternion.Euler(90, 90, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
         }
         else if (cell.bestDirection == GridDirection.west)
         {
-            iconSR.sprite = ffIcons[0];
+            render.sprite = sprite[0];
             Quaternion newRot = Quaternion.Euler(90, 270, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
         }
         else if (cell.bestDirection == GridDirection.northEast)
         {
-            iconSR.sprite = ffIcons[1];
+            render.sprite = sprite[1];
             Quaternion newRot = Quaternion.Euler(90, 0, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
         }
         else if (cell.bestDirection == GridDirection.northWest)
         {
-            iconSR.sprite = ffIcons[1];
+            render.sprite = sprite[1];
             Quaternion newRot = Quaternion.Euler(90, 270, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
         }
         else if (cell.bestDirection == GridDirection.southEast)
         {
-            iconSR.sprite = ffIcons[1];
+            render.sprite = sprite[1];
             Quaternion newRot = Quaternion.Euler(90, 90, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
         }
         else if (cell.bestDirection == GridDirection.southWest)
         {
-            iconSR.sprite = ffIcons[1];
+            render.sprite = sprite[1];
             Quaternion newRot = Quaternion.Euler(90, 180, 0);
-            iconGO.transform.rotation = newRot;
+            textureObject.transform.rotation = newRot;
         }
         else
         {
-            iconSR.sprite = ffIcons[0];
+            render.sprite = sprite[0];
         }
     }
 
