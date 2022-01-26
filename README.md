@@ -4,7 +4,7 @@ In this project, I will talk about Flowfields and show a basic implementation.
 
 What are Flowfields?
 
-Flowfields, which you can also call vector fields is a technique to calculate the best path to a destination from somewhere in the world. The world is divided into a grid, every cell has its own vector. The vectors point towards a neighboring node, which gives the fastest path towards the goal. When an agent passes over a cell, it uses the vector inside that cell to influence its velocity. The agent traverses over every cell like this until it reaches the goal. This pathfinding system is often used in RTS games, some of the first flowfields were used in Supreme Command 2 and in Planetary Annihilation.
+Flowfields, which you can also call vector fields is a technique to calculate the best path to a goal or destination from somewhere in the world. The world is divided into a grid, every cell has its own vector. The vectors point towards a neighboring node, which gives the fastest path towards the goal. When an agent passes over a cell, it uses the vector inside that cell to influence its velocity. The agent traverses over every cell like this until it reaches the goal. This pathfinding system is often used in RTS games, some of the first flowfields were used in Supreme Command 2 and in Planetary Annihilation.
 
 How to create a flowfield?
 
