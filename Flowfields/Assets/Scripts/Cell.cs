@@ -14,6 +14,8 @@ public class Cell
 
     public int maxBestCost;
 
+    public GridDirection bestDirection;
+
     public Cell(Vector3 _worldPosition, Vector2Int _gridIndex)
     {
         worldPosition = _worldPosition;
@@ -22,6 +24,7 @@ public class Cell
         maxCostIncrease = 300;
         maxBestCost = 100000;
         bestCost = maxBestCost;
+        bestDirection = GridDirection.none;
     }   
 
     public void IncreaseCost(int increase)

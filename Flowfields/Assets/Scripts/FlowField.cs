@@ -70,7 +70,7 @@ public class FlowField
                 }
                 else if(hasIncreasedCost == false && col.gameObject.layer == LayerMask.NameToLayer("Mud"))
                 {
-                    currentCell.IncreaseCost(3);
+                    currentCell.IncreaseCost(4);
                     //prevent increasing the same cell that have multiple muds // can change to mudincreased cost if want to add more values
                     hasIncreasedCost = true;
                 }
@@ -164,6 +164,26 @@ public class FlowField
         
         return grid[x,y];
 
+    }
+
+    public void CreateFlowField()
+    {
+        foreach(Cell currentCel in grid)
+        {
+            List<Cell> currentNeighbors = GetNeigbors(currentCel.gridIndex, GridDirection.AllDirections);
+
+            int bestCost = currentCel.bestCost;
+
+            foreach(Cell currentNeighbor in currentNeighbors)
+            {
+                if(currentNeighbor.bestCost < bestCost)
+                {
+                    bestCost = currentNeighbor.bestCost;
+                    currentCel.bestDirection = GridDirection.GetDirectionFromV2I(currentNeighbor.gridIndex - currentCel.gridIndex);
+                }
+            }
+
+        }
     }
 
 }
