@@ -10,6 +10,7 @@ How to create a flowfield?
 
 I decided to create my implementation in Unity. I made my setup by creating a simple ground(grass) plane, creating a 30x30 grid. I also implemented some visual debuginformation whilst working on the project. 
 
+![](FlowfieldSCAndVid/Grid.png)
 
 Creating a flowfield takes a couple of steps.
 First of all, you need to create a cost field. A cost field gives every cell a value between 1 and a maximum amount. My maximum amount was 300, but this can be any other large number. Every cell is set to a value of 1 by default. I created 2 terrain types, mud and walls and added some of these objects to my scene. I then went over each cell, upon colliding with one of these terrain types i increased their respective cell. I increased the cost of mud cells by 4, so they have a value of 5 and wall cells got a value of 300.
